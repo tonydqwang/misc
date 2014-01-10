@@ -34,33 +34,42 @@ public class RailsWebApp {
 			List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 
 			//sign in
-			//HttpPost post = new HttpPost("http://localhost:3000/droid-signin");
-			/*nvps.add(new BasicNameValuePair("authenticity_token","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
-			nvps.add(new BasicNameValuePair("session[email]","user1@49x.com"));
-			nvps.add(new BasicNameValuePair("session[password]","face2book@"));
-			nvps.add(new BasicNameValuePair("commit","Sign In"));*/
-			
-			//view schedule
-			HttpPost post = new HttpPost("http://localhost:3000/droid/schedule");
+			/*HttpPost post = new HttpPost("http://localhost:3000/droid/user");
+			//nvps.add(new BasicNameValuePair("authenticity_token","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
 			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
-			nvps.add(new BasicNameValuePair("cmd","view"));
+			nvps.add(new BasicNameValuePair("cmd","signin"));
+			nvps.add(new BasicNameValuePair("session[email]","user1@49x.com"));
+			nvps.add(new BasicNameValuePair("session[password]","face2book@"));*/
+			
+			//create user NOT YET WORKING
+			/*HttpPost post = new HttpPost("http://localhost:3000/droid/user");
+			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
+			nvps.add(new BasicNameValuePair("cmd","create"));
+			nvps.add(new BasicNameValuePair("name","NEWDUDE"));
+			nvps.add(new BasicNameValuePair("email","NEWDUDE@49x.com"));
+			nvps.add(new BasicNameValuePair("password","face2book@")); */
+			
+			//read schedule
+			/*HttpPost post = new HttpPost("http://localhost:3000/droid/schedule");
+			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
+			nvps.add(new BasicNameValuePair("cmd","read"));
 			nvps.add(new BasicNameValuePair("userid","3"));
 			nvps.add(new BasicNameValuePair("start","2013-12-01"));
-			nvps.add(new BasicNameValuePair("end","2014-12-31"));
+			nvps.add(new BasicNameValuePair("end","2014-12-31"));*/
 			
-			//view restrictions
+			//read restrictions
 			/*HttpPost post = new HttpPost("http://localhost:3000/droid/restriction");
 			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
-			nvps.add(new BasicNameValuePair("cmd","view"));
+			nvps.add(new BasicNameValuePair("cmd","read"));
 			nvps.add(new BasicNameValuePair("userid","2"));	
 			nvps.add(new BasicNameValuePair("start","2013-12-01"));
 			nvps.add(new BasicNameValuePair("end","2014-01-01")); */
 			
-			//add restriction
+			//create restriction
 			/*HttpPost post = new HttpPost("http://localhost:3000/droid/restriction");
 			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
-			nvps.add(new BasicNameValuePair("cmd","add"));
-			nvps.add(new BasicNameValuePair("userid","3"));	
+			nvps.add(new BasicNameValuePair("cmd","create"));
+			nvps.add(new BasicNameValuePair("user_id","3"));	
 			nvps.add(new BasicNameValuePair("start","2013-12-01"));
 			nvps.add(new BasicNameValuePair("end","2014-01-01"));
 			nvps.add(new BasicNameValuePair("reason","V"));
@@ -79,13 +88,49 @@ public class RailsWebApp {
 			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
 			nvps.add(new BasicNameValuePair("cmd","update"));
 			nvps.add(new BasicNameValuePair("id","1"));
-			nvps.add(new BasicNameValuePair("userid","NO_CHANGE"));	
+			nvps.add(new BasicNameValuePair("user_id","NO_CHANGE"));	
 			nvps.add(new BasicNameValuePair("start","2013-12-01"));
 			nvps.add(new BasicNameValuePair("end","NO_CHANGE"));
 			nvps.add(new BasicNameValuePair("reason","NO_CHANGE"));
 			nvps.add(new BasicNameValuePair("approve","NO_CHANGE"));*/
 			
+			//read department
+			/*HttpPost post = new HttpPost("http://localhost:3000/droid/department");
+			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
+			nvps.add(new BasicNameValuePair("cmd","read"));*/
 			
+			//join department, contract not automatically created for obvious reasons
+			/*HttpPost post = new HttpPost("http://localhost:3000/droid/department");
+			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
+			nvps.add(new BasicNameValuePair("cmd","join"));
+			nvps.add(new BasicNameValuePair("department_id","1"));
+			nvps.add(new BasicNameValuePair("user_id","42")); */
+			
+			//leave department
+			/*HttpPost post = new HttpPost("http://localhost:3000/droid/department");
+			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
+			nvps.add(new BasicNameValuePair("cmd","leave"));
+			nvps.add(new BasicNameValuePair("department_id","1"));
+			nvps.add(new BasicNameValuePair("user_id","42")); */
+			
+			//read pool
+			/*HttpPost post = new HttpPost("http://localhost:3000/droid/pool");
+			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
+			nvps.add(new BasicNameValuePair("cmd","read"));*/
+			
+			//join pool, contract not automatically created for obvious reasons
+			/*HttpPost post = new HttpPost("http://localhost:3000/droid/pool");
+			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
+			nvps.add(new BasicNameValuePair("cmd","join"));
+			nvps.add(new BasicNameValuePair("pool_id","1"));
+			nvps.add(new BasicNameValuePair("user_id","42")); */
+			
+			//leave pool
+			/*HttpPost post = new HttpPost("http://localhost:3000/droid/pool");
+			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
+			nvps.add(new BasicNameValuePair("cmd","leave"));
+			nvps.add(new BasicNameValuePair("pool_id","1"));
+			nvps.add(new BasicNameValuePair("user_id","42"));*/
 			
 			
 			post.setEntity(new UrlEncodedFormEntity(nvps, Consts.UTF_8));
