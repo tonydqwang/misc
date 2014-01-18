@@ -1,5 +1,8 @@
 package tony.apps.helloworld;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +23,17 @@ public class UserInfoActivity extends FragmentActivity implements
 	 * current dropdown position.
 	 */
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
+	private static List<String> teams;
+	
+	private static List<String> getTeams() {
+		if (teams == null) {
+			teams = new ArrayList<String>();
+			teams.add("KGH-Psychiatry");
+			teams.add("KGH-InternalMedicine");
+			teams.add("KGH-Ophthalmology");
+		}
+		return teams;
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +51,8 @@ public class UserInfoActivity extends FragmentActivity implements
 				new ArrayAdapter<String>(actionBar.getThemedContext(),
 						android.R.layout.simple_list_item_1,
 						android.R.id.text1, new String[] {
-								getString(R.string.title_section1),
-								getString(R.string.title_section2),
+								getTeams().get(0),
+								getTeams().get(1),
 								getString(R.string.title_section3), }), this);
 		//TextView tView = (TextView) findViewById(R.id.section_label);
 		//Intent intent = getIntent();
@@ -74,7 +88,7 @@ public class UserInfoActivity extends FragmentActivity implements
 		// container view.
 		Fragment fragment = new DummySectionFragment();
 		Bundle args = new Bundle();
-		args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
+		args.putInt(DummySectionFragment.ARG_SECTION, position);
 		fragment.setArguments(args);
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.container, fragment).commit();
@@ -90,7 +104,7 @@ public class UserInfoActivity extends FragmentActivity implements
 		 * The fragment argument representing the section number for this
 		 * fragment.
 		 */
-		public static final String ARG_SECTION_NUMBER = "section_number";
+		public static final String ARG_SECTION = "department_name";
 
 		public DummySectionFragment() {
 		}
@@ -102,8 +116,8 @@ public class UserInfoActivity extends FragmentActivity implements
 					container, false);
 			TextView dummyTextView = (TextView) rootView
 					.findViewById(R.id.section_label);
-			dummyTextView.setText(Integer.toString(getArguments().getInt(
-					ARG_SECTION_NUMBER)));
+			dummyTextView.setText(getTeams().get(
+					getArguments().getInt(ARG_SECTION)));
 			return rootView;
 		}
 	}

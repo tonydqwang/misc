@@ -61,15 +61,16 @@ public final class R {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int button_send=0x7f050005;
+        public static final int department1=0x7f050009;
         public static final int edit_message=0x7f050004;
         public static final int hello_world=0x7f050003;
         public static final int stand_by=0x7f050007;
         public static final int title_activity_display_message=0x7f050006;
-        public static final int title_activity_throw_away=0x7f05000c;
+        public static final int title_activity_throw_away=0x7f05000d;
         public static final int title_activity_user_info=0x7f050008;
-        public static final int title_section1=0x7f050009;
-        public static final int title_section2=0x7f05000a;
-        public static final int title_section3=0x7f05000b;
+        public static final int title_section1=0x7f05000a;
+        public static final int title_section2=0x7f05000b;
+        public static final int title_section3=0x7f05000c;
     }
     public static final class style {
         /** 

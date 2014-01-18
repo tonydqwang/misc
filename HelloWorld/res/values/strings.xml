@@ -10,6 +10,7 @@
     <string name="title_activity_display_message">My Message</string>
     <string name="stand_by">Stand By</string>
     <string name="title_activity_user_info">UserInfoActivity</string>
+    <string name="department1">KGH-Psychiatry</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
