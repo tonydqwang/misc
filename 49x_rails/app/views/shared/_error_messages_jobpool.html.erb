@@ -1,0 +1,12 @@
+<% if @jobpool.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      The form contains <%= pluralize(@jobpool.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @jobpool.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

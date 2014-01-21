@@ -1,0 +1,35 @@
+<h1>Edit Contract</h1>
+
+<% current_user %>
+
+<% depart_id = (Department.find_by_name(session[:dept_name].downcase)).id %>
+	
+<% employee = (Employee.where(user_id: current_user.id).where(department_id: depart_id)) %>
+	
+<% for record in employee do %>
+  <% employeeid = record.id %>
+<% end %>
+
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for(@contract) do |f| %>
+	  <%= render 'shared/error_messages_contract' %>
+	  
+	  <%= f.label :begin_time, "Start time for contract"%>
+	  <%= f.datetime_select(:begin_time, {}, {:style => "width:110px; height:40px;"}) %><br><br>
+
+	  
+	  <%= f.label :end_time, "End time for contract"%>
+	  <%= f.datetime_select(:end_time, {}, {:style => "width:110px; height:40px;"}) %><br>
+
+	  
+	  
+	  
+	  <%= f.hidden_field :employee_id, :value => employeeid %>
+	  
+
+	  <br><%= f.submit "Update contract", class: "btn btn-large btn-primary" %>
+	  
+	<% end %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<% provide(:title, 'Help') %>
+<h1>Help</h1>
+<p>Find me in app/views/static_pages/help.html.erb</p>
+
+<p>The display of current time and the "Get time" button below are for testing purposes.</p>
+<p>
+  <%= timeCheck %>
+  <%= button_to "Get time", help_path, :method => "get", class: "btn btn-large btn-primary" %>
+</p>

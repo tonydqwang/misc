@@ -1,0 +1,49 @@
+<% provide(:title, 'Create Department') %>
+<% current_user %>
+
+<h1>Change Department: </h1>
+
+<%if session[:dept_name] == nil%>
+	<% session[:dept_name] = @current_employee.name %>
+<%end%>
+<%= button_to "Create Department", createdept_path, class: "btn btn-large btn-secondary" %>
+<%= button_to "Create Job", '/jobs/new', class: "btn btn-large btn-secondary", :method => :get %>
+<%= button_to "Create Pool", '/pools/new', class: "btn btn-large btn-secondary", :method => :get %>
+
+
+
+<% @dept_list = Employee.where(:user_id => current_user.id) %><br>
+
+<%= form_tag '/jobs/testing', :method => :get do %>
+	<%= select_tag(:employee, options_from_collection_for_select(@dept_list, 'name', 'name'), {:style => "width:150px; height:40px;"}) %>
+	<%= submit_tag "Change Current Department" %>
+<%end%>
+
+	
+<% @job_list = Department.find_by_name(session[:dept_name].downcase).jobs %>
+
+<%= form_tag '/jobs/testing2', :method => :get do %>
+	<%= select_tag(:id, options_for_select(@job_list.collect{|j| [ j.name.capitalize, j.id]}), {:style => "width:150px; height:40px;"}) %>
+	<%= submit_tag "Edit a Job" %>
+<%end%>
+
+Current Department: <%= session[:dept_name].capitalize %><br>
+<% if session[:current_job_id] %>
+Current Job: <%= Job.find(session[:current_job_id]).name.capitalize %><br>
+	<% @jobpools = Jobpool.where(:job_id => session[:current_job_id]) %>
+	<% if !@jobpools.empty? %>
+	Pools in <%= Job.find(session[:current_job_id]).name.capitalize %>
+		<%= form_tag '/jobs/pools', :method => :delete do %>
+			<% @pools_list = Pool.find(@jobpools.collect{|j| j.pool_id}) %>		
+			<%= select_tag "jobpool[pool_id][]", options_from_collection_for_select(@pools_list, 'name', 'id'), :multiple => true %>
+			<%= submit_tag "remove a pool" %>
+		<% end %>
+	<% end %>
+
+	Add Pools:
+	<%= form_tag '/pools', :method => :post do %>
+		<% @new_pool_list = Pool.where(:department_id => Department.find_by_name(session[:dept_name].downcase).id) %>
+		<%= select_tag "jobpool[pool_id][]", options_for_select(@new_pool_list.collect{|p| [ p.name.capitalize, p.id]}), :multiple => true %>
+		<%= submit_tag "Add a Pool" %>
+	<% end %>
+<% end %>

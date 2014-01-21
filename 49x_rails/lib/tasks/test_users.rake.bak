@@ -1,0 +1,36 @@
+namespace :db do
+	desc "Fill database with test users"
+	task populate: :environment do
+		User.delete_all
+		Department.delete_all
+		Employee.delete_all	
+	
+		department_name = "KGH-PSYC"
+		pw = "face2book@"
+		emailExt = "@49x.com"
+		
+		email = "OS" + emailExt
+		admin = User.create!(name: "OS",
+                 email: email,
+                 password: pw,
+                 password_confirmation: pw)
+		admin.toggle!(:admin)
+	
+		department = Department.create!(name: department_name, user_id: admin.id)
+	
+		employee = Employee.create!(name: department.name, department_id: department.id, user_id: admin.id)
+		
+		5.times do |n|
+			name  = "R#(n) Dude"
+			email = "R#(n)" + emailExt
+			user_poplulate = User.create!(
+				name: name,
+                email: email,
+                password: pw,
+                password_confirmation: pw
+			)
+			
+			employee_populate = Employee.create!(name: department.name, department_id: department.id, user_id: user_poplulate.id)
+		end
+	end
+end

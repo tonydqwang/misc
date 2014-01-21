@@ -1,0 +1,18 @@
+<% provide(:title, 'Create Department') %>
+<h1>Create Department</h1>
+<% current_user %>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@department) do |f| %>
+      <%= render 'shared/error_messages_department' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+	  
+	  <%= f.hidden_field :user_id, :value => @current_user.id %>
+
+      <%= f.submit "Create department", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

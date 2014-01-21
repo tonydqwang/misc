@@ -1,0 +1,60 @@
+<h1>Manage Pools</h1>
+<% current_user %>
+<h4><font size="3">Listing of Pools in <font color="blue"><%= session[:dept_name] %></font></font></h4><br>
+<% getPool session[:dept_name] %>
+
+  <% for record in @poolRecords do %>
+	<% record.id %>
+
+    <% @poolRecord = Pool.find_by_id(record.id) %>
+
+    <%  %>
+
+    <p1><b>Pool Name: </b><%= record.name %></p1>
+
+	<%= form_for record do |f| %>
+      <%= f.hidden_field 'my_variable', :value => record.id %>
+
+
+	      <% link_to "Delete", record, method: :delete, class: "btn btn-large btn-secondary", confirm: "You Sure?" %>
+
+
+          <% submit_tag "Edit Pool", :name => "Update Pool", class: "btn btn-large btn-secondary" %>
+		  
+	<div class="buttonLayoutPool">
+      <div class="userPool1">
+	      <%= link_to "Delete", record, method: :delete, class: "btn btn-large btn-secondary", confirm: "You Sure?" %>
+	  </div>
+	  
+      <div class="userPool2">
+          <%= submit_tag "Edit Pool", :name => "Update Pool", class: "btn btn-large btn-secondary" %>
+	  </div>
+	</div>
+
+
+
+    <% end %>
+
+
+    <%  %>
+	<%  %>
+    <%  %>
+    <%  %>
+    <%  %>
+    <%  %>
+    <%  %>
+  <% end %>
+
+<%= link_to "Create New Pool", newpool_path, :method => "get", class: "btn btn-large btn-primary" %>
+<%= link_to "Manage Jobs", showjob_path, :method => "get", class: "btn btn-large btn-primary" %>
+<%= link_to "Manage Jobpools", showjobpool_path, :method => "get", class: "btn btn-large btn-primary" %>
+
+
+
+
+<%  %>
+<%  %>
+<%  %>
+<%  %>
+<%  %>
+

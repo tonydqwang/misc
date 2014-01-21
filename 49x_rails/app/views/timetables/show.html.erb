@@ -1,0 +1,17 @@
+<h1>Manage Shifts</h1>
+<% current_user %>
+
+<% @current_timetable %>
+
+<% for timetable in @timetables do %>
+	<% timetable.id %>
+	
+	<p1>Information - <%= timetable.info %>, Starts at - <%= timetable.begin_time %>, Ends at - <%= timetable.end_time %></p1>
+	<%= form_for timetable do |f| %>
+		<%= f.hidden_field 'my_variable', :value => timetable.id %>
+
+		<%= submit_tag "Edit Shift", :name => "Update Timetable", class: "btn btn-large btn-secondary" %>
+
+	<% end %><div><br><br>
+
+<% end %>

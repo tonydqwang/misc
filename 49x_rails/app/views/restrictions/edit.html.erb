@@ -1,0 +1,26 @@
+<h1>Edit Restrictions</h1>
+
+<% current_user %>
+
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for(@restriction) do |f| %>
+	  <%= render 'shared/error_messages_restriction' %>
+	  
+	  <%= f.label :begin_time, "Start time for unavailability"%>
+	  <%= f.datetime_select(:begin_time, {}, {:style => "width:110px; height:40px;"}) %><br><br>
+
+	  
+	  <%= f.label :end_time, "End time for unavailability"%>
+	  <%= f.datetime_select(:end_time, {}, {:style => "width:110px; height:40px;"}) %><br>
+
+	  
+	  <%= f.hidden_field :user_id, :value => @current_user.id %>
+	  
+	  <%= f.hidden_field :reason, :value => "v" %>
+
+	  <br><%= f.submit "Update restriction", class: "btn btn-large btn-primary" %>
+	  
+	<% end %>
+  </div>
+</div>

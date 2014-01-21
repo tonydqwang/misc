@@ -1,0 +1,23 @@
+<% provide(:title, 'Create Schedule') %>
+<h1>Create Schedule</h1>
+<% current_user %>
+<% current_employee @current_user %>
+
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for(@allfile) do |f| %>
+	  <%= render 'shared/error_messages_allfile' %>
+	  
+	  <%= f.label :master_loadform, "Master Loadfile"%>
+	  <%= f.file_field :master_loadform %>
+
+	  
+	  <%= f.hidden_field :user_id, :value => @current_user.id %>
+	  
+	  <%= f.hidden_field :name, :value => "Schedule Files for #{session[:dept_name]}" %>
+
+	  <%= f.submit "Create schedule", class: "btn btn-large btn-primary" %>
+	<% end %>
+  </div>
+</div>
+

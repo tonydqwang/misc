@@ -1,0 +1,16 @@
+<h1>Join Pool</h1>
+
+<% current_user %>
+
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for(@staff) do |f| %>
+	  <%= render 'shared/error_messages_staff' %>
+	    <%= f.hidden_field :user_id, :value => @current_user.id %>
+
+		
+		<%= f.submit "Join Pool", class: "btn btn-large btn-primary" %>
+	  
+	<% end %>
+  </div>
+</div>
