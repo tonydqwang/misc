@@ -84,13 +84,13 @@ public class RailsWebApp {
 			/*HttpPost post = new HttpPost("http://localhost:3000/droid/schedule");
 			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
 			nvps.add(new BasicNameValuePair("cmd","read_my_swap_requests"));
-			nvps.add(new BasicNameValuePair("user_id","44"));*/
+			nvps.add(new BasicNameValuePair("user_id","16"));*/
 			
 			//get Swap offers
 			/*HttpPost post = new HttpPost("http://localhost:3000/droid/schedule");
 			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
-			nvps.add(new BasicNameValuePair("cmd","read_my_swap_offers"));
-			nvps.add(new BasicNameValuePair("user_id","50"));*/
+			nvps.add(new BasicNameValuePair("cmd","read_swap_offers"));
+			nvps.add(new BasicNameValuePair("user_id","16"));*/
 			
 			//delete Swap offers
 			/*HttpPost post = new HttpPost("http://localhost:3000/droid/schedule");
@@ -171,7 +171,7 @@ public class RailsWebApp {
 			HttpPost post = new HttpPost("http://localhost:3000/droid/department");
 			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
 			nvps.add(new BasicNameValuePair("cmd","read_by_user_id"));
-			nvps.add(new BasicNameValuePair("user_id","2"));
+			nvps.add(new BasicNameValuePair("user_id","3"));
 			
 			//join department, contract not automatically created for obvious reasons
 			/*HttpPost post = new HttpPost("http://localhost:3000/droid/department");
@@ -233,6 +233,7 @@ public class RailsWebApp {
 			HttpResponse response = client.execute(post);
 			ResponseHandler<String> handler = new BasicResponseHandler();
 			String body = handler.handleResponse(response);
+			body = body.replaceAll("\\{", "\n");
 			System.out.println(body);
 		} catch (Exception e) {
 			e.printStackTrace();
