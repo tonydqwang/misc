@@ -171,7 +171,11 @@ public class RailsWebApp {
 			HttpPost post = new HttpPost("http://localhost:3000/droid/department");
 			nvps.add(new BasicNameValuePair("key","CNo3TfHI5GzfT3j+AEbREXO5LrZhHeFy3X64JVa07z8="));
 			nvps.add(new BasicNameValuePair("cmd","read_by_user_id"));
+<<<<<<< HEAD
 			nvps.add(new BasicNameValuePair("user_id","2"));
+=======
+			nvps.add(new BasicNameValuePair("user_id","5"));
+>>>>>>> branch 'master' of https://github.com/tonydqwang/hobby.git
 			
 			//join department, contract not automatically created for obvious reasons
 			/*HttpPost post = new HttpPost("http://localhost:3000/droid/department");
