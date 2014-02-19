@@ -1,0 +1,20 @@
+<% provide(:title, 'Schedule') %>
+<!-- Probably move the stylesheet to you layout. Also make sure you include the javascript. -->
+<%= stylesheet_link_tag "event_calendar" %>
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "event_calendar.js" %>
+<% end %>
+
+
+<% current_department %>
+<% current_user %>
+
+<% @jsonString_Test = '[[{"jobID":0,"timespan":"2013-08-23T06:00:00.000-05:00/2013-08-23T18:00:00.000-05:00","employeeID":27},{"jobID":0,"timespan":"2013-08-24T06:00:00.000-05:00/2013-08-24T18:00:00.000-05:00","employeeID":9},{"jobID":0,"timespan":"2013-08-25T06:00:00.000-05:00/2013-08-25T18:00:00.000-05:00","employeeID":25}],[{"jobID":1,"timespan":"2013-08-23T18:00:00.000-05:00/2013-08-24T06:00:00.000-05:00","employeeID":30},{"jobID":1,"timespan":"2013-08-24T18:00:00.000-05:00/2013-08-25T06:00:00.000-05:00","employeeID":26},{"jobID":1,"timespan":"2013-08-25T18:00:00.000-05:00/2013-08-26T06:00:00.000-05:00","employeeID":26}]]' %>
+
+<h1>Schedule</h1>
+<p1>
+  <% twovars(@user, @department) %>
+</p1>
+
+
+<%= raw(event_calendar) %>

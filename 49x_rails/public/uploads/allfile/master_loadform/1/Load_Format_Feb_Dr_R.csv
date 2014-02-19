@@ -1,0 +1,73 @@
+Administrator Master Load Form,,,,,
+,,,,,
+Year,2014,,,,
+Month,2,,,,
+,,,,,
+Staff List,,,,,
+Pool,User Name,User Email,Restrictions,Reason,
+R5,Abo-Ela,abo@kgh.ca,unavailable,V,MatLeave
+R5,Habib,hab@kgh.ca,unavailable,V,EXAM
+R5,Murray,mur@kgh.ca,unavailable,V,EXAM
+R5,Parmar,par@kgh.ca,unavailable,V,EXAM
+R5,Stakheiko,sta@kgh.ca,unavailable,V,EXAM
+R5,Walker,wal@kgh.ca,unavailable,V,EXAM
+R4,Abbasi,abb@kgh.ca,9-15,V,
+R4,Doan,doa@kgh.ca,1 4 11 25,V,
+R4,Johal,joh@kgh.ca,9-15,V,
+R4,Singh,sin@kgh.ca,5-18 20 1-3,V,
+R4,Volochniuk,vol@kgh.ca,1-2 8-16 20,V,
+R4,Wijeratne,wij@kgh.ca,2-3 8-15 1,V,
+R3,Alavi-Tabari,ala@kgh.ca,unavailable,V,MatLeave
+R3,Odejayi,ode@kgh.ca,,,
+R3,Patel,pat@kgh.ca,25 1-3,V,
+R3,Reshetukha,res@kgh.ca,1-9,V,
+R2,Asmer,asm@kgh.ca,3-10 13-15,V,
+R2,Dhaliwal,dha@kgh.ca,,,
+R2,Khachatryan,kha@kgh.ca,1-17,V,
+R2,Fernando,fer@kgh.ca,,,
+R2,Penfold,pen@kgh.ca,,,
+R2,Xiang,xia@kgh.ca,15-16,V,canWorkFamilyDay
+R2,Yang,yan@kgh.ca,7-9,V,ER
+R1,Crespin,cre@kgh.ca,,,
+R1,Martins,mar@kgh.ca,,,
+R1,Mofidi,mof@kgh.ca,1-11,V,
+R1,Salz,sal@kgh.ca,,,
+R1,Szymczak,szy@kgh.ca,1-11 19-28,V,
+OS,Blowers(FM),blo-fm@kgh.ca,10-28 1-2,V,
+OS,Good(FM),goo-fm@kgh.ca,10-28,V,
+OS,Leung(FM),leu-fm@kgh.ca,10-28,V,
+OS,Warshafsky(FM),war-fm@kgh.ca,1-11 16-21,V,
+OS,Patel(FM),pat-fm@kgh.ca,1-11,V,
+OS,Fakour(FM),fak-fm@kgh.ca,1-11 18-27,V,
+OS,Langelaan(FM),lan-fm@kgh.ca,1-11 25-27,V,
+,,,,,
+,,,,,
+Shifts,,,,,
+Job,Pools,Begin,End,Repeat,
+Senior Resident,R3 R4 R5,2014-02-01T21:00:00,2014-02-02T9:00:00,weekends
+Junior Resident,R1 R2 OS,2014-02-01T21:00:00,2014-02-02T9:00:00,weekends
+Senior Resident,R3 R4 R5,2014-02-03T09:00:00,2014-02-04T9:00:00,weekdays
+Junior Resident,R1 R2 OS,2014-02-03T09:00:00,2014-02-04T9:00:00,weekdays
+,,,,,
+,,,,,
+Rules,,,,,
+Rule ID,Format,,,,
+3,All individuals cannot work more than (24) hours in a (48) hour period,,,,
+,,,,,
+,,,,,
+Special Fields,Staff list,,,,
+,Other Search Conditions (Pools),Restrictions,Reason,,
+,"pool name, eg R5 R2","Single days, space separated (1 3 5)",V - (Vacation),,
+,dept. if OffService,"Range, days of current month (15-20)",P - Preferred Day Off,,
+,,Weekend (wkd),O - Other,,
+,,,,,
+,Schedule,,,,
+,Repeat,,,,
+,W - Weekly,,,,
+,D - Daily,,,,
+,(DELAYED) R - Work Days,,,,
+,(DELAYED) Mondays?,,,,
+,,,,,
+,Rules,,,,
+,Format,,,,
+,... detailed format to be designed,,,,

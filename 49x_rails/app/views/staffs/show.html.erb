@@ -1,0 +1,81 @@
+<h1>Join Pools</h1>
+<% current_user %>
+
+<% getPool session[:dept_name] %>
+
+<h4><font size="3">Listing of Pools in <font color="blue"><%= session[:dept_name] %></font></font></h4><br>
+
+<% getJoinedPools @current_user %>
+
+<% if @joinedPools != [] %>
+<h4><font size="2.5"><i>The pools you are currently in:</i></font></h4><br><br>
+  <% for userPool in @joinedPools %>
+    <% singlePool = Pool.find_by_id(userPool.pool_id) %>
+    <p1><b>Pool Name: </b><%= singlePool.name.upcase %></p1>
+	<%= button_to "Leave Pool", userPool, method: :delete, class: "btn btn-large btn-secondary", confirm: "You Sure?" %>
+	<%  %>
+    <%  %>
+    <%  %>
+    <%  %>
+    <%  %>
+  <% end %>
+<% end %><br>
+   
+  <h4><font size="2.5"><i>Available  pools:</i></font></h4><br>
+  <% for record in @poolRecords do %>
+
+	<% record.id %>
+	<% flag = nil %>
+    <%= flag %>
+    <% for userPool in @joinedPools %>
+      <% singlePool = Pool.find_by_id(userPool.pool_id) %>
+      <% if record.id == singlePool.id %>
+	    <% flag = 1 %>
+	  <% end %>
+	<% end %>
+    <%  %>
+
+	<% if flag == nil %>
+      <%  %>
+      <%  %>
+      <% @poolRecord = Pool.find_by_id(record.id) %>
+
+      <%  %>
+
+      <p1><b>Pool Name: </b><%= record.name.upcase %></p1>
+	  
+	  <% button_to "Join Pool", newstaff_path, class: "btn btn-large btn-secondary" %>
+	
+	  <% @staff = Staff.new %>
+      <%= form_for(@staff) do |f| %>
+	    <%= render 'shared/error_messages_staff' %>
+	    <%= f.hidden_field :user_id, :value => @current_user.id %>
+		<%= f.hidden_field :pool_id, :value => record.id %>
+
+		
+		<%= f.submit "Join Pool", class: "btn btn-large btn-secondary" %>
+	  
+	  <% end %>
+	
+
+
+
+
+    <% end %>
+	<%  %>
+    <%  %>
+    <%  %>
+    <%  %>
+    <%  %>
+    <%  %>
+  <% end %>
+
+
+
+
+<%  %>
+<%  %>
+<%  %>
+<%  %>
+<%  %>
+

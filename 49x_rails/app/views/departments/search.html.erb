@@ -1,0 +1,16 @@
+<% provide(:title, 'Create Department') %>
+<h1>Find A Department</h1>
+<% current_user %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_tag('/finddept', method: "get") do %>
+	  <%= label_tag(:name, "Search for:") %>
+	  <%= text_field_tag(:name) %>
+	  
+	  <%= label_tag(:all, "List All Departments") %>
+	  <%= check_box_tag(:all, 'yes', false) %>
+	  <p></p>
+	  <%= submit_tag("Search") %>
+	<% end %>
+  </div>
+</div>

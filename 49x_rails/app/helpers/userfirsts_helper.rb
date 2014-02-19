@@ -1,0 +1,2 @@
+module UserfirstsHelper
+end

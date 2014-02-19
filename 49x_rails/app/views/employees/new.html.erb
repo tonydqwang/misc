@@ -1,0 +1,24 @@
+<% provide(:title, 'Create Department') %>
+<h1>Join Department</h1>
+<% current_user %>
+
+<h1>Search Results: </h1>
+<% if @departments.empty? %>
+    <p>
+        No Departments found.
+    </p>
+<% else %>
+	<% @departments.each do |department| %>
+		Department: <%= department.name.upcase =%>
+		<% if Employee.where(:department_id => department.id, :user_id => current_user.id).empty? %>
+			<%= form_for @employee do |f| %>				
+				<%= hidden_field_tag 'my_variable', department.id %>
+				<%= submit_tag "Join Department", class: "btn btn-large btn-secondary" %>
+				
+				<% end %>	
+		<% else %>
+				<%= button_to "Leave Department", {:action => 'destroy', :id => department.id }, :method => :delete, class: "btn btn-large btn-secondary" %>
+		<% end %>		
+	<% end %>
+	<%= button_to "Create Department", createdept_path, class: "btn btn-large btn-secondary", :method => :get %>
+<% end %>

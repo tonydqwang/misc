@@ -1,0 +1,98 @@
+<!--<%= @user.name %>, <%= @user.email %>-->
+<% provide(:title, @user.name) %>
+<% current_employee @user%>
+
+<div class="row">
+  <aside class="span6">
+    <section>
+     <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name.capitalize %><br>
+		email: <%= @user.email %><br><br>
+		<% if @current_employee %>
+			<%if @current_employee.user_id == current_user.id %>
+				<%if session[:dept_name] == nil%>
+				<% session[:dept_name] = @current_employee.name %>
+				<%end%>
+				Department: <%= session[:dept_name].capitalize %>
+				<% @dept_list = Employee.scoped(:conditions => ["user_id == #{@user.id}"]) %><br>
+
+				<% session[:dept_name] %>
+				<%= form_for @user do |f| %>
+					<%= select(:employee, :name, @dept_list.collect {|p| [ p.name.capitalize, p.name.capitalize] }, {prompt: '-Select Department'}, {:style => "width:150px; height:40px;"}) %>
+					<%= submit_tag "Change Department", :name => "Change Department" %>
+				<% end %>
+			<% end %>
+		<% end %>
+      </h1>
+    </section>
+  </aside>
+</div>
+
+<% if @user == @current_user %>
+  <% if !@current_employee %>
+    <div class="inDeptCheck">
+      <body>
+        <h1>
+
+	      <%= image_tag("Create Pool.jpg", size: "200x200", alt: "Create Pool", class: "centImg") %>
+	      <%= image_tag("Join Pool.jpg", size: "200x200", alt: "Join Pool", class: "centImg2")%>
+          <%= button_to "Create Department", createdept_path, :method => "get", class: "btn btn-large btn-primary" %>
+	      <%= button_to "Join Department", finddept_path, :method => "get", class: "btn btn-large btn-primary" %>
+
+        </h1>
+      </body>
+    </div>
+  <% else %>
+    <%= checkUpload @user %>
+    <div class="viewHome">
+      <body>
+        <h1> 
+	      <%= image_tag("Calendar.jpg", size: "200x200", alt: "Calender") %>
+	      <%= image_tag("Restriction.jpeg", size: "200x200", alt: "Restriction") %>
+	      <%= image_tag("Department.jpg", size: "200x200", alt: "Department") %>
+        </h1>
+      </body>
+    </div>
+	  
+    <div class="buttonLayoutUserHome">
+      <div class="userHome1">
+	    <%= button_to "View Schedule", indivschedule_path, :method => "get", class: "btn btn-large btn-primary" %>
+	  </div>
+	  
+      <div class="userHome2">
+	    <%= button_to "Manage Restrictions", restriction_path, :method => "get", class: "btn btn-large btn-primary" %>
+	  </div>
+	  
+	  <div class="userHome3">
+	    <%= button_to "Find a Department", finddept_path, :method => "get", class: "btn btn-large btn-primary" %>
+	  </div>
+	
+	  <%= isAdmin @user%>
+      <% if @adminCheck %>
+	    <div class="buttonLayoutAdminHome">
+	      <% if @uploadSkip %>
+		    <div class="userHome4">
+			  <%= button_to "Create Schedule", createschedule_path, :method => "get", class: "btn btn-large btn-primary" %>
+		    </div>
+          <% else %>
+	        <% thisFile @user %>
+		    <div class="userHome4">
+			  <%= button_to "Create Schedule", generateschedule_path, :method => "get", class: "btn btn-large btn-primary" %>
+		    </div>
+          <% end %>	  
+          <div class="userHome5">
+	        <%= button_to "Manage Schedule", manageSchedule_path, :method => "get", class: "btn btn-large btn-primary" %>
+	      </div>
+	      <div class="userHome6">
+	        <%= button_to "Team Management", "#", :method => "get", class: "btn btn-large btn-primary" %>
+	      </div>
+	    </div>
+	  <% else %>
+	  	<% thisFile @user %>
+	  <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+
